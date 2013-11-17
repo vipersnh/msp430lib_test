@@ -35,7 +35,7 @@ class __UART__
 	uint8_t getchar(uint8_t &c);
 	uint8_t putchar(uint8_t c);
 	uint8_t gets(uint8_t *buffer, uint16_t length);
-	uint8_t puts(char const *buffer, uint16_t length);
+	uint8_t puts(char const *buffer, uint16_t length = 0);
 	uint8_t peek(uint8_t &c);
 	uint16_t get_rxCount();	// Count of received bytes available
 	uint16_t get_txCount();	// Count of bytes left available and can be accomodated at the time of calling

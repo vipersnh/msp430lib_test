@@ -5,7 +5,10 @@
 
 
 #include "uart.hpp"
-
+extern "C"
+{
+	#include "string.h"
+}
 
 
 /*
@@ -118,8 +121,12 @@ uint8_t __UART__::gets(uint8_t *buffer,uint16_t length)
 * DESCRIPTION        : Insert the characters from the given buffer into the tx buffer. 
 		       Count of characters is given in length.
 */
-uint8_t __UART__::puts(char const *buffer, uint16_t length)
+uint8_t __UART__::puts(char const *buffer, uint16_t length = 0)
 {
+	if(length == 0)
+	{
+		length = strlen(buffer);
+	}
 	if((UART_BUFFER_LENGTH - tx_length) > length)
 	{
 		disable_uart_interrupts();
